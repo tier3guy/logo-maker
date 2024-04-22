@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import ReduxProvider from "@/redux/provider";
+import { TooltipProvider, Tooltip } from "@/components/ui/tooltip";
+import IconSettingsProvider from "@/providers/IconSettingsProvider";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -20,9 +20,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={spaceGrotesk.className}>
-                <ReduxProvider>
-                    <TooltipProvider>{children}</TooltipProvider>
-                </ReduxProvider>
+                <IconSettingsProvider>
+                    <TooltipProvider>
+                        <Tooltip>{children}</Tooltip>
+                    </TooltipProvider>
+                </IconSettingsProvider>
             </body>
         </html>
     );

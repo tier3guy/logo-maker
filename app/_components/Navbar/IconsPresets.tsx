@@ -1,10 +1,6 @@
 import { cn } from "@/lib/utils";
 import { Apple, Book, Pencil, Table2, Undo2 } from "lucide-react";
-import {
-    Tooltip,
-    TooltipContent,
-    TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 
 export default function IconsPresets() {
     return (
@@ -52,7 +48,7 @@ interface IPreset {
 
 export function Preset({ icon, className, tooltipContent = null }: IPreset) {
     return (
-        <Tooltip>
+        <div>
             <TooltipTrigger>
                 <div
                     className={cn(
@@ -66,6 +62,6 @@ export function Preset({ icon, className, tooltipContent = null }: IPreset) {
             {tooltipContent && (
                 <TooltipContent>{tooltipContent}</TooltipContent>
             )}
-        </Tooltip>
+        </div>
     );
 }

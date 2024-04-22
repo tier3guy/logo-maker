@@ -5,12 +5,14 @@ interface ISidebarButton {
     label: string;
     className?: string;
     active?: boolean;
+    onClick: () => void;
 }
 
 export default function SidebarButton({
     label,
     className,
     active,
+    onClick,
 }: ISidebarButton) {
     return (
         <button
@@ -19,6 +21,7 @@ export default function SidebarButton({
                 active && "bg-gray-200",
                 className
             )}
+            onClick={onClick}
         >
             {label}
         </button>
