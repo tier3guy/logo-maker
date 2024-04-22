@@ -1,8 +1,8 @@
-import { Pencil } from "lucide-react";
 import Slider from "@/components/Slider";
-import { useState } from "react";
 import { ChromePicker } from "react-color";
 import { useIconSettings } from "@/hooks";
+import { DialogTrigger } from "@/components/ui/dialog";
+import IconSelectorDialog from "./IconSelectorDialog";
 
 export default function IconSetters() {
     return (
@@ -18,16 +18,21 @@ export default function IconSetters() {
 }
 
 export function IconContainer() {
+    const { icon } = useIconSettings();
+
     return (
         <div className="flex flex-col gap-2">
             <div className="flex items-center justify-between text-gray-600">
                 <p className="text-sm">Icon</p>
-                <p className="text-xs">Pencil</p>
+                <p className="text-xs">{icon.iconName}</p>
             </div>
             <div>
-                <div className="h-12 w-12 grid place-content-center bg-gray-200">
-                    <Pencil />
-                </div>
+                <DialogTrigger>
+                    <div className="h-12 w-12 grid place-content-center bg-gray-200">
+                        <icon.icon />
+                    </div>
+                </DialogTrigger>
+                <IconSelectorDialog />
             </div>
         </div>
     );
@@ -73,7 +78,7 @@ export function Customizer() {
 }
 
 export function BorderCustomizer() {
-    const { icon, updateIconSettings } = useIconSettings();
+    const { icon, updateIconSettings, addChanges } = useIconSettings();
     return (
         <div className="flex flex-col gap-3">
             <p className="text-sm">Border Color</p>
@@ -83,6 +88,9 @@ export function BorderCustomizer() {
                     onChange={(e) => {
                         updateIconSettings("borderColor", e.hex);
                     }}
+                    onChangeComplete={() => {
+                        addChanges();
+                    }}
                 />
             </div>
         </div>
@@ -90,7 +98,7 @@ export function BorderCustomizer() {
 }
 
 export function FillCustomizer() {
-    const { icon, updateIconSettings } = useIconSettings();
+    const { icon, updateIconSettings, addChanges } = useIconSettings();
     return (
         <div className="flex flex-col gap-3">
             <p className="text-sm">Fill Color</p>
@@ -99,6 +107,9 @@ export function FillCustomizer() {
                     color={icon.fillColor}
                     onChange={(e) => {
                         updateIconSettings("fillColor", e.hex);
+                    }}
+                    onChangeComplete={() => {
+                        addChanges();
                     }}
                 />
             </div>

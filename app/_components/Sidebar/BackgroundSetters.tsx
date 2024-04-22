@@ -101,7 +101,8 @@ export function Customizer() {
 }
 
 export function BorderCustomizer() {
-    const { background, updateBackgroundSettings } = useIconSettings();
+    const { background, updateBackgroundSettings, addChanges } =
+        useIconSettings();
     return (
         <div className="flex flex-col gap-3">
             <p className="text-sm">Background</p>
@@ -110,6 +111,9 @@ export function BorderCustomizer() {
                     color={background.backgroundColor}
                     onChange={(e) => {
                         updateBackgroundSettings("backgroundColor", e.hex);
+                    }}
+                    onChangeComplete={() => {
+                        addChanges();
                     }}
                 />
             </div>

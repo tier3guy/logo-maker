@@ -3,6 +3,7 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { TooltipProvider, Tooltip } from "@/components/ui/tooltip";
 import IconSettingsProvider from "@/providers/IconSettingsProvider";
+import { Dialog } from "@/components/ui/dialog";
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
             <body className={spaceGrotesk.className}>
                 <IconSettingsProvider>
                     <TooltipProvider>
-                        <Tooltip>{children}</Tooltip>
+                        <Dialog>
+                            <Tooltip>{children}</Tooltip>
+                        </Dialog>
                     </TooltipProvider>
                 </IconSettingsProvider>
             </body>

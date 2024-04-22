@@ -1,3 +1,5 @@
+import { useIconSettings } from "@/hooks";
+
 interface ISlider {
     label: string;
     value: number;
@@ -15,6 +17,8 @@ export default function Slider({
     min = 0,
     max = 100,
 }: ISlider) {
+    const { addChanges } = useIconSettings();
+
     return (
         <div className="flex flex-col gap-1">
             <div className="flex items-center text-gray-600 justify-between">
@@ -27,6 +31,9 @@ export default function Slider({
                 type="range"
                 value={value}
                 onChange={onChange}
+                onMouseUp={() => {
+                    addChanges();
+                }}
                 className="p-1 range w-full bg-slate-800 appearance-none cursor-pointer dark:bg-gray-700"
             />
         </div>

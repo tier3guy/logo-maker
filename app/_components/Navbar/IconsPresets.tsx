@@ -1,12 +1,18 @@
 import { cn } from "@/lib/utils";
 import { Apple, Book, Pencil, Table2, Undo2 } from "lucide-react";
 import { TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { useIconSettings } from "@/hooks";
 
 export default function IconsPresets() {
+    const { handleReset } = useIconSettings();
+
     return (
         <div className="flex items-center divide-x-[1px]">
             <div className="px-2">
-                <button className="h-10 w-10 grid place-content-center hover:bg-gray-200">
+                <button
+                    className="h-10 w-10 grid place-content-center hover:bg-gray-200"
+                    onClick={handleReset}
+                >
                     <Undo2 />
                 </button>
             </div>
@@ -48,7 +54,7 @@ interface IPreset {
 
 export function Preset({ icon, className, tooltipContent = null }: IPreset) {
     return (
-        <div>
+        <div className="">
             <TooltipTrigger>
                 <div
                     className={cn(
