@@ -20,7 +20,7 @@ export function Logo() {
     return (
         <div
             id="__logo__"
-            className="bg-gray-200 border-2 border-gray-400 border-dashed cursor-pointer grid place-content-center"
+            className="border-2 border-gray-400 border-transparent hover:border-dashed hover:border-gray-400 bg-white cursor-pointer grid place-content-center"
             style={{
                 padding: background.padding,
                 height: LOGO_SIZE,
@@ -28,18 +28,18 @@ export function Logo() {
             }}
         >
             <div
-                className={cn(
-                    "grid place-content-center overflow-hidden",
-                    `shadow-${background.shadow}`
-                )}
                 style={{
                     borderRadius: background.borderRadius,
                     background: background.backgroundColor,
                     height: LOGO_SIZE - background.padding * 2,
                     width: LOGO_SIZE - background.padding * 2,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: background.shadow,
                 }}
             >
-                <Pencil
+                <icon.icon
                     size={icon.size}
                     style={{
                         rotate: icon.rotation + "deg",

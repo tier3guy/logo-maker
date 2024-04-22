@@ -44,7 +44,7 @@ function Footer() {
                 app by{" "}
                 <Link
                     href="https://www.tier3guy.com"
-                    className="text-yellow-500 hover:underline"
+                    className="text-black hover:underline"
                 >
                     @tie3guy
                 </Link>

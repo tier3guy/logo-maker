@@ -35,7 +35,7 @@ export default function IconSettingsProvider({
     children: Readonly<React.ReactNode>;
 }) {
     const [iconSettings, setIconSettings] = useState<IIcon>({
-        icon: <Pencil />,
+        icon: Pencil,
         size: 250,
         rotation: 0,
         borderWidth: 2,
@@ -44,7 +44,7 @@ export default function IconSettingsProvider({
     });
     const [bgSettings, setBgSettings] = useState<IBackground>({
         borderRadius: 115,
-        padding: 5,
+        padding: 2,
         shadow: "none",
         backgroundColor: "rgba(175,51,242,1)",
     });

@@ -17,15 +17,28 @@ export default function BackgroundSetters() {
 export function Customizer() {
     const { background, updateBackgroundSettings } = useIconSettings();
     const [shadow, setShadow] = useState<number>(0);
+    const [shadowName, setShadowName] = useState<string>("NONE");
+
     const shadowMap: {
         [key: number]: string;
     } = {
         0: "none",
-        1: "sm",
-        2: "md",
-        3: "lg",
-        4: "xl",
-        5: "2xl",
+        1: "0 1px 2px 0 rgb(0 0 0 / 0.05)",
+        2: "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        3: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+        4: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
+        5: "0 25px 50px -12px rgb(0 0 0 / 0.25)",
+    };
+
+    const shadowValueName: {
+        [key: number]: string;
+    } = {
+        0: "NONE",
+        1: "SM",
+        2: "MD",
+        3: "LG",
+        4: "XL",
+        5: "2XL",
     };
 
     return (
@@ -59,10 +72,13 @@ export function Customizer() {
             <div className="flex flex-col gap-2">
                 <Slider
                     label="Shadow"
-                    valueLabel={background.shadow.toUpperCase()}
+                    valueLabel={shadowName}
                     value={shadow}
                     onChange={(e) => {
                         setShadow(parseInt(e.target.value));
+                        setShadowName(
+                            shadowValueName[parseInt(e.target.value)]
+                        );
                         updateBackgroundSettings(
                             "shadow",
                             shadowMap[parseInt(e.target.value)]
