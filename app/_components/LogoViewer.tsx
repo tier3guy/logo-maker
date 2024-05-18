@@ -1,7 +1,5 @@
 "use client";
-import { Pencil } from "lucide-react";
 import { useIconSettings } from "@/hooks";
-import { cn } from "@/lib/utils";
 
 export default function LogoViewer() {
     return (

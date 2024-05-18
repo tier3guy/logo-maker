@@ -1,5 +1,5 @@
 "use client";
-import { Pencil } from "lucide-react";
+import { Apple } from "lucide-react";
 import { createContext, useCallback, useEffect, useState } from "react";
 
 interface IIcon {
@@ -38,8 +38,8 @@ export default function IconSettingsProvider({
     children: Readonly<React.ReactNode>;
 }) {
     const initialIconSettings: IIcon = {
-        icon: Pencil,
-        iconName: "Pencil",
+        icon: Apple,
+        iconName: "Apple",
         size: 250,
         rotation: 0,
         borderWidth: 2,

@@ -1,10 +1,52 @@
-import { cn } from "@/lib/utils";
-import { Apple, Book, Pencil, Table2, Undo2 } from "lucide-react";
-import { TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Undo2 } from "lucide-react";
 import { useIconSettings } from "@/hooks";
 
+const Presets = [
+    {
+        iconSettings: {
+            borderColor: "white",
+            fillColor: "transparent",
+        },
+        backgroundSettings: {
+            borderRadius: 0,
+            background: "rgba(0,0,0,1)",
+        },
+    },
+    {
+        iconSettings: {
+            borderColor: "black",
+            fillColor: "transparent",
+        },
+        backgroundSettings: {
+            borderRadius: 0,
+            background: "#ffeda0",
+        },
+    },
+    {
+        iconSettings: {
+            borderColor: "black",
+            fillColor: "transparent",
+        },
+        backgroundSettings: {
+            borderRadius: 12,
+            background: "linear-gradient(45deg, #ef709b 0%, #eca0ff 100%)",
+        },
+    },
+    {
+        iconSettings: {
+            borderColor: "black",
+            fillColor: "transparent",
+        },
+        backgroundSettings: {
+            borderRadius: "50%",
+            background: "radial-gradient(circle, #c6f8ff 0%, #a9ff68 100%)",
+        },
+    },
+];
+
 export default function IconsPresets() {
-    const { handleReset } = useIconSettings();
+    const { handleReset, icon, updateIconSettings, updateBackgroundSettings } =
+        useIconSettings();
 
     return (
         <div className="flex items-center divide-x-[1px]">
@@ -16,58 +58,52 @@ export default function IconsPresets() {
                     <Undo2 />
                 </button>
             </div>
-            <div className="flex items-center gap-2 px-4">
-                <p className="text-sm text-gray-400">Presets</p>
-                <div className="flex items-center gap-2">
-                    <Preset
-                        icon={<Pencil />}
-                        tooltipContent={
-                            "Great for startups that want to look professional, serious and mordern. For example Nike and adidas."
-                        }
-                    />
-                    <Preset
-                        icon={<Apple />}
-                        className="bg-gradient-to-r from-cyan-400 to-yellow-400 rounded-lg"
-                    />
-                    <Preset
-                        icon={<Table2 />}
-                        className="bg-gradient-to-r from-purple-600 via-red-600 to-yellow-400 rounded-2xl"
-                        tooltipContent={
-                            "Great for startups that want to look friendly and trendy. For example Instagram."
-                        }
-                    />
-                    <Preset
-                        icon={<Book />}
-                        className="rounded bg-yellow-200 text-black"
-                    />
+            <div className="flex items-center gap-3">
+                <p className="ps-2 text-sm text-gray-400">Presets</p>
+                <div className="flex items-center gap-2 justify-center">
+                    {Presets.map((preset, index) => {
+                        return (
+                            <button
+                                className="h-10 w-10 grid place-content-center"
+                                key={index}
+                                style={{
+                                    background:
+                                        preset.backgroundSettings.background,
+                                    borderRadius:
+                                        preset.backgroundSettings.borderRadius,
+                                }}
+                                onClick={() => {
+                                    updateIconSettings(
+                                        "borderColor",
+                                        preset.iconSettings.borderColor
+                                    );
+                                    updateIconSettings(
+                                        "fillColor",
+                                        preset.iconSettings.fillColor
+                                    );
+                                    updateBackgroundSettings(
+                                        "borderRadius",
+                                        preset.backgroundSettings.borderRadius
+                                    );
+                                    updateBackgroundSettings(
+                                        "backgroundColor",
+                                        preset.backgroundSettings.background
+                                    );
+                                }}
+                            >
+                                {
+                                    <icon.icon
+                                        style={{
+                                            color: preset.iconSettings
+                                                .borderColor,
+                                        }}
+                                    />
+                                }
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
-        </div>
-    );
-}
-
-interface IPreset {
-    className?: string;
-    icon: React.ReactNode;
-    tooltipContent?: string | null;
-}
-
-export function Preset({ icon, className, tooltipContent = null }: IPreset) {
-    return (
-        <div className="">
-            <TooltipTrigger>
-                <div
-                    className={cn(
-                        "h-10 w-10 bg-black text-white grid place-content-center",
-                        className
-                    )}
-                >
-                    {icon}
-                </div>
-            </TooltipTrigger>
-            {tooltipContent && (
-                <TooltipContent>{tooltipContent}</TooltipContent>
-            )}
         </div>
     );
 }

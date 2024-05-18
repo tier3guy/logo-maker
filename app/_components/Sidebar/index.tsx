@@ -29,7 +29,7 @@ export default function Sidebar() {
                 </div>
                 <Footer />
             </div>
-            <div className="w-3/5 h-full overflow-y-scroll p-2">
+            <div className="h-full overflow-y-scroll p-2">
                 {activeTab === "ICON" && <IconSetters />}
                 {activeTab === "BACKGROUND" && <BackgroundSetters />}
             </div>

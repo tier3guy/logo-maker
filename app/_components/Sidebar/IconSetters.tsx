@@ -1,8 +1,8 @@
 import Slider from "@/components/Slider";
-import { ChromePicker } from "react-color";
 import { useIconSettings } from "@/hooks";
-import { DialogTrigger } from "@/components/ui/dialog";
+import { DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import IconSelectorDialog from "./IconSelectorDialog";
+import ColorPicker from "@/components/ColorPicker";
 
 export default function IconSetters() {
     return (
@@ -32,7 +32,9 @@ export function IconContainer() {
                         <icon.icon />
                     </div>
                 </DialogTrigger>
-                <IconSelectorDialog />
+                <DialogContent>
+                    <IconSelectorDialog />
+                </DialogContent>
             </div>
         </div>
     );
@@ -83,15 +85,7 @@ export function BorderCustomizer() {
         <div className="flex flex-col gap-3">
             <p className="text-sm">Border Color</p>
             <div className="flex items-center justify-center">
-                <ChromePicker
-                    color={icon.borderColor}
-                    onChange={(e) => {
-                        updateIconSettings("borderColor", e.hex);
-                    }}
-                    onChangeComplete={() => {
-                        addChanges();
-                    }}
-                />
+                <ColorPicker picker="borderColor" />
             </div>
         </div>
     );
@@ -103,15 +97,7 @@ export function FillCustomizer() {
         <div className="flex flex-col gap-3">
             <p className="text-sm">Fill Color</p>
             <div className="flex items-center justify-center">
-                <ChromePicker
-                    color={icon.fillColor}
-                    onChange={(e) => {
-                        updateIconSettings("fillColor", e.hex);
-                    }}
-                    onChangeComplete={() => {
-                        addChanges();
-                    }}
-                />
+                <ColorPicker picker="fillColor" />
             </div>
         </div>
     );

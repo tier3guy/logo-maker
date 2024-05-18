@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Slider from "@/components/Slider";
-import { ChromePicker } from "react-color";
 import { useIconSettings } from "@/hooks";
+import ColorPicker from "@/components/ColorPicker";
 
 export default function BackgroundSetters() {
     return (
@@ -107,15 +107,7 @@ export function BorderCustomizer() {
         <div className="flex flex-col gap-3">
             <p className="text-sm">Background</p>
             <div className="flex items-center justify-center">
-                <ChromePicker
-                    color={background.backgroundColor}
-                    onChange={(e) => {
-                        updateBackgroundSettings("backgroundColor", e.hex);
-                    }}
-                    onChangeComplete={() => {
-                        addChanges();
-                    }}
-                />
+                <ColorPicker picker="backgroundColor" />
             </div>
         </div>
     );
