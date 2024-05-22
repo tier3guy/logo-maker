@@ -49,8 +49,8 @@ export default function IconsPresets() {
         useIconSettings();
 
     return (
-        <div className="flex items-center divide-x-[1px]">
-            <div className="px-2">
+        <div className="flex items-center justify-between md:justify-start pe-3 md:pe-0">
+            <div className="px-2 border-e-[1.5px] md:border-e-[1px] border-gray-300">
                 <button
                     className="h-10 w-10 grid place-content-center hover:bg-gray-200"
                     onClick={handleReset}
@@ -59,8 +59,8 @@ export default function IconsPresets() {
                 </button>
             </div>
             <div className="flex items-center gap-3">
-                <p className="ps-2 text-sm text-gray-400">Presets</p>
-                <div className="flex items-center gap-2 justify-center">
+                <p className="ps-2 md:ps-4 text-sm text-gray-400">Presets</p>
+                <div className="flex items-center gap-4 md:gap-2 justify-center">
                     {Presets.map((preset, index) => {
                         return (
                             <button

@@ -3,7 +3,7 @@ import { useIconSettings } from "@/hooks";
 
 export default function LogoViewer() {
     return (
-        <section className="h-full overflow-hidden relative">
+        <section className="h-full md:overflow-hidden relative">
             <div className="absolute inset-0 h-full w-full bg-gray-100 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] grid place-content-center">
                 <Logo />
             </div>
@@ -13,12 +13,13 @@ export default function LogoViewer() {
 
 export function Logo() {
     const { icon, background } = useIconSettings();
-    const LOGO_SIZE = 430;
+    const windowWidth = window.document.body.clientWidth;
+    const LOGO_SIZE = windowWidth < 600 ? 300 : 430;
 
     return (
         <div
             id="__logo__"
-            className="border-2 border-gray-400 border-transparent hover:border-dashed hover:border-gray-400 bg-white cursor-pointer grid place-content-center"
+            className="border-2 border-gray-400 border-transparent hover:border-dashed hover:border-gray-400 bg-white cursor-pointer grid place-content-center border-t-[1.5px]"
             style={{
                 padding: background.padding,
                 height: LOGO_SIZE,

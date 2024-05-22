@@ -9,9 +9,9 @@ export default function Sidebar() {
     const [activeTab, setActiveTab] = useState<"ICON" | "BACKGROUND">("ICON");
 
     return (
-        <section className="h-full overflow-hidden flex divide-x-[1px]">
-            <div className="w-2/5 h-full p-2 flex flex-col justify-between">
-                <div className="w-full flex flex-col gap-2">
+        <section className="h-full overflow-hidden flex flex-col md:flex-row divide-x-[1px]">
+            <div className="md:w-2/5 md:h-full p-2 flex flex-col justify-between border-b-2 border-gray-200 md:border-b-0">
+                <div className="w-full flex md:flex-col gap-2">
                     <SidebarButton
                         label="Icon"
                         active={activeTab === "ICON"}
@@ -39,7 +39,7 @@ export default function Sidebar() {
 
 function Footer() {
     return (
-        <div>
+        <div className="hidden md:block">
             <p className="text-sm text-gray-400">
                 app by{" "}
                 <Link

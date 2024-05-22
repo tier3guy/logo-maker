@@ -81,3 +81,7 @@
     width: 18px;
     background: white;
 }
+
+.debug {
+    border: 2px solid red;
+}

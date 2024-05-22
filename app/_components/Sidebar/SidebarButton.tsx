@@ -17,7 +17,7 @@ export default function SidebarButton({
     return (
         <button
             className={cn(
-                "hover:bg-gray-200 py-2 px-3 font-semibold text-start w-full",
+                "hover:bg-gray-200 py-2 px-3 font-semibold text-start md:w-full",
                 active && "bg-gray-200",
                 className
             )}

@@ -3,11 +3,11 @@ import Sidebar from "./Sidebar";
 
 export default function LogoMakerBoard() {
     return (
-        <section className="h-full overflow-hidden flex divide-x-[1px]">
-            <div className="w-[40%] h-full">
+        <section className="h-full overflow-y-scroll  md:overflow-hidden flex flex-col md:flex-row divide-x-[1px]">
+            <div className="w-full md:w-[40%] h-[35vh] md:h-full">
                 <Sidebar />
             </div>
-            <div className="w-[60%] h-full z-40">
+            <div className="w-full md:w-[60%] h-full z-40">
                 <LogoViewer />
             </div>
         </section>
