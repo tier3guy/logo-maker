@@ -13,7 +13,7 @@ export default function LogoViewer() {
 
 export function Logo() {
     const { icon, background } = useIconSettings();
-    const windowWidth = window.document.body.clientWidth;
+    const windowWidth = document.body.clientWidth;
     const LOGO_SIZE = windowWidth < 600 ? 300 : 430;
 
     return (
