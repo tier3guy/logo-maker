@@ -1,5 +1,6 @@
 "use client";
 import { useIconSettings } from "@/hooks";
+import { useEffect, useState } from "react";
 
 export default function LogoViewer() {
     return (
@@ -13,7 +14,12 @@ export default function LogoViewer() {
 
 export function Logo() {
     const { icon, background } = useIconSettings();
-    const windowWidth = document.body.clientWidth;
+    const [windowWidth, setWindowWidth] = useState(1000);
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+    }, []);
+
     const LOGO_SIZE = windowWidth < 600 ? 300 : 430;
 
     return (
