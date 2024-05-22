@@ -15,7 +15,7 @@ Check out the [live demo](https://logomaker.tier3guy.com/) to see the Logo Maker
 
 ## Screenshots
 
-![Screenshot](https://logomaker.tier3guy.com/screenshot.png)
+![Screenshot](https://github.com/tier3guy/logo-maker/blob/master/public/screenshot.png)
 
 ## Getting Started
 
